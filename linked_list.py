@@ -133,6 +133,27 @@ class LinkedList:
             fast_pointer = fast_pointer.next.next
         return slow_pointer.data
 
+    def detect_loop(self):
+        fast_pointer = self.head
+        slow_pointer = self.head
+        while slow_pointer and fast_pointer and fast_pointer.next:
+            slow_pointer = slow_pointer.next
+            fast_pointer = fast_pointer.next.next
+            if slow_pointer == fast_pointer:
+                return True
+        return False
+
+    def remove_duplicate(self):
+        current = self.head
+        elements = []
+        while current:
+            if current.data in elements:
+                previous.next = current.next
+            else:
+                elements.append(current.data)
+                previous = current
+            current = current.next
+
 
     def __str__(self):
         printable_ll = ""
